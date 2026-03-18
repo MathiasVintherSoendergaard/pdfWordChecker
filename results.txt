@@ -1,5 +1,0 @@
-Herning: found
-Aarhus: found
-Banana: not found
-Mathias: found
-mif: not found
