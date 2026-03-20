@@ -1,5 +1,7 @@
 *.pdf
 *.txt
+*.xlsx
+.venv/
 
 __pycache__/
 *.pyc
