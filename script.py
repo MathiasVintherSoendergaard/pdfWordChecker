@@ -1,6 +1,25 @@
 import pandas as pd
 from pypdf import PdfReader
 
+def get_file_paths():
+    default_pdf = "example.pdf"
+    default_excel = "Words.xlsx"
+
+    use_custom_files = input("Do you want to provide file names? (y/n): ").strip().lower()
+
+    if use_custom_files == "y":
+        pdf_input = input(f"Enter PDF file name [{default_pdf}]: ").strip()
+        excel_input = input(f"Enter Excel file name [{default_excel}]: ").strip()
+
+        pdf_path = pdf_input or default_pdf
+        excel_path = excel_input or default_excel
+
+    else:
+        pdf_path = default_pdf
+        excel_path = default_excel
+    
+    return pdf_path, excel_path
+
 def extract_text_from_pdf(pdf_path):
     reader = PdfReader(pdf_path)
     text = ""
@@ -36,8 +55,7 @@ def save_results_to_file(results, output_file):
             else:
                 file.write(f"{word}: not found\n")
 
-pdf_path = "example.pdf"
-excel_path = "words.xlsx"
+pdf_path, excel_path = get_file_paths()
 output_file = "results.txt"
 
 words_to_check = read_words_from_excel(excel_path)
